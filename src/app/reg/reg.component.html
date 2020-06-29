@@ -1,0 +1,48 @@
+<div class="container" style="margin-top: 50px">
+    <div class="row"> 
+          <div class="col-md-7 offset-md-3">  
+  <h5>Angular <span style="background-color: yellow">Signup</span> Page With Cloud Firestore</h5><br/><hr/>
+  <h5 class="text-center"><img src="https://s3.amazonaws.com/myamcatimages/company/images/8527.png" height="50px"/></h5><br/>
+  <form [formGroup]="form" (ngSubmit)="sendFirebase()">
+    <div class="form-group">
+        <label><b style="color: green">Email:</b></label>
+        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && sf.email.errors }" />
+        <div *ngIf="submitted && sf.email.errors" class="invalid-feedback">
+            <div *ngIf="sf.email.errors.required">Email is required*</div>
+            <div *ngIf="sf.email.errors.email">Email must be a valid email address</div>
+        </div>
+    </div>
+  <div class="form-group">
+      <label><b style="color: green">Username:</b></label>
+      <input type="text" formControlName="uname" class="form-control" [ngClass]="{ 'is-invalid': submitted && sf.uname.errors }" />
+      <div *ngIf="submitted && sf.uname.errors" class="invalid-feedback">
+        <div *ngIf="sf.uname.errors.required">Username is required*</div>
+        <div *ngIf="sf.uname.errors.minlength">Atleast 6 characters*</div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+      <label><b style="color: green">Password:</b></label>
+      <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && sf.password.errors }" />
+      <div *ngIf="submitted && sf.password.errors" class="invalid-feedback">
+        <div *ngIf="sf.password.errors.required">Password is required*</div>
+        <div *ngIf="sf.password.errors.minlength">Atleast 6 characters*</div>
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+      <button class="btn btn-success">Register</button>&nbsp;
+      <button type="button" class="btn btn-success" [routerLink]="['/login']">Login</button>
+  </div>
+  </form><br>
+  <div class="alert alert-info"  *ngIf="showSuccessMessage">
+    You have been registered successfully
+  </div>
+  <div class="alert alert-danger" *ngIf="showDeletedMessage">
+   Username or Email is already existed
+  </div>
+  </div>
+    </div>
+   
+  </div>
